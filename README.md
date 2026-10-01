@@ -4,7 +4,8 @@
 
 Colibrì : https://github.com/JustVugg/colibri/blob/main/README.zh-TW.md?utm_source=chatgpt.com
 
-
+codex: https://chatgpt.com/s/cx_6abe223c6f8481919b332e6440e4aed7
+chatgpt : https://chatgpt.com/share/6abe225f-e944-83e8-8d56-84681afc1d2a
 # Tiger-colibri-Qwen3.6-35B-A3B
 
 我的電腦主記憶體是16G，在此專案之前，使用lamma，最多可以使用model大小是9.6G的gemma4:e4b。此專案則可以使用21.5G的model Qwen3.6-35B-A3B。
