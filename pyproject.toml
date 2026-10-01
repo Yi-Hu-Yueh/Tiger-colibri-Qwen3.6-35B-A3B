@@ -1,0 +1,10 @@
+[project]
+name = "tiger-colibri-phase1"
+version = "0.1.0"
+description = "Windows readiness and Colibri prebuilt validation dashboard"
+requires-python = ">=3.11,<3.12"
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "jinja2>=3.1,<4", "huggingface_hub>=1.0,<2", "ddgs>=9.16,<10", "lxml>=6.0,<7", "psutil>=7.0,<8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"

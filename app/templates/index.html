@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiger Colibri · Qwen3.6 Chat</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="eyebrow">TIGER · COLIBRI</span><h1>Local Qwen3.6 Console</h1></div>
+    <div id="overall-badge" class="badge not-run">NOT RUN</div>
+  </header>
+  <main>
+    <section class="hero panel">
+      <div><h2>Project Status</h2><p>Local readiness checks and browser chat for the official Colibrì Windows runtime.</p></div>
+      <button data-action="scan-all" class="primary">Run Read-only Scan</button>
+    </section>
+
+    <div class="lock-banner"><strong>CPU MODE</strong><span>Qwen3.6 runs locally with the validated CPU-only configuration. CUDA remains disabled.</span></div>
+
+    <div class="grid">
+      <section class="panel wide chat-panel" id="qwen-chat">
+        <div class="section-head"><h2>Qwen3.6 Chat</h2><span id="chat-status" class="badge stopped">STOPPED</span></div>
+        <div class="chat-summary"><span><strong>Model:</strong> Qwen3.6-35B-A3B</span><span><strong>Mode:</strong> CPU</span></div>
+        <div class="actions chat-controls"><button id="chat-start" class="primary">Start Model</button><button id="chat-stop">Stop Model</button><button id="chat-cancel" disabled>Stop Generation</button><button id="chat-clear">Clear Chat</button></div>
+        <p id="chat-error" class="chat-error" role="alert"></p>
+        <div id="chat-transcript" class="chat-transcript" aria-live="polite"><p class="muted chat-empty">Start the model to begin a local conversation.</p></div>
+        <div id="chat-metrics" class="chat-metrics muted"></div>
+        <form id="chat-form" class="chat-compose">
+          <textarea id="chat-input" rows="3" placeholder="Type a message…" aria-label="Chat message"></textarea>
+          <div class="chat-send-row"><span class="chat-key-hint">Enter to send · Shift+Enter for newline</span><label class="web-search-toggle"><input id="chat-web-search" type="checkbox"> Force Web Search</label><label for="chat-max-tokens">Max Tokens</label><select id="chat-max-tokens"><option value="256">256</option><option value="512">512</option><option value="1024">1024</option><option value="2048">2048</option><option value="4096" selected>4096</option></select><button id="chat-send" type="submit" class="primary">Send</button></div>
+        </form>
+      </section>
+      <section class="panel" id="hardware"><div class="section-head"><h2>Hardware</h2><span class="badge not-run">NOT RUN</span></div><div class="content muted">Run the read-only scan.</div></section>
+      <section class="panel" id="ram"><div class="section-head"><h2>System RAM</h2><span class="badge not-run">NOT RUN</span></div><div class="content muted">Awaiting probe.</div></section>
+      <section class="panel" id="gpu"><div class="section-head"><h2>NVIDIA GPU</h2><span class="badge not-run">NOT RUN</span></div><div class="content muted">CUDA is deferred to Phase 4.</div></section>
+      <section class="panel wide" id="storage"><div class="section-head"><h2>Storage Devices</h2><span class="badge not-run">NOT RUN</span></div><p class="muted">Project storage and future model storage are evaluated separately.</p><div class="content muted">Awaiting all-disk probe.</div></section>
+      <section class="panel wide" id="storage-config"><div class="section-head"><h2>Storage Configuration</h2><span class="badge not-run">NOT RUN</span></div><p class="muted">Project source, acquisition/archive storage, and practical inference storage are independent.</p><div class="content storage-roots"><article><h3>PROJECT ROOT</h3><p class="muted">Loading detected storage…</p></article><article><h3>DOWNLOAD ROOT</h3><p class="muted">Loading acquisition storage…</p></article><article><h3>MODEL RUNTIME ROOT</h3><p class="muted">Loading runtime readiness…</p></article></div></section>
+      <section class="panel" id="benchmark"><div class="section-head"><h2>Runtime Storage Benchmark</h2><span class="badge not-run">NOT RUN</span></div><p class="muted">Requires a separately configured MODEL_RUNTIME_ROOT. Download-root HDD throughput is not inference-readiness evidence.</p><div class="actions"><select id="benchmark-size"><option value="256">256 MiB</option><option value="512">512 MiB</option></select><button data-action="benchmark">Run Benchmark</button></div><div class="content"></div></section>
+      <section class="panel wide" id="space-analysis"><div class="section-head"><h2>C: Space Analysis</h2><span class="badge not-run">NOT RUN</span></div><p class="muted"><strong>Read-only analysis. No files are deleted automatically.</strong></p><p class="muted">Minimum Phase 1 requirement: 30 GiB free. Preferred project target: 45–50 GiB free.</p><button data-action="analyze-space">Analyze C: Space</button><div class="content"></div></section>
+      <section class="panel" id="python"><div class="section-head"><h2>Python Runtime</h2><span class="badge not-run">NOT RUN</span></div><div class="content muted">The web server must run under Python 3.11.x.</div></section>
+      <section class="panel" id="ollama"><div class="section-head"><h2>Ollama Baseline</h2><span class="badge not-run">NOT RUN</span></div><p class="muted">Ollama is baseline only and is not modified by this project.</p><button data-action="ollama">Detect Ollama</button><div class="content"></div></section>
+      <section class="panel wide" id="ollama-storage"><div class="section-head"><h2>Ollama Baseline Storage</h2><span class="badge not-run">NOT RUN</span></div><p class="muted">Informational only. D: is HDD-backed, so cold model loads may be slower.</p><div class="content muted">Loading migration evidence…</div></section>
+      <section class="panel wide" id="release"><div class="section-head"><h2>Colibrì Official Release</h2><span class="badge not-run">NOT RUN</span></div><p class="muted">Source restricted to github.com/JustVugg/colibri.</p><button data-action="release">Check Latest Official Release</button><div class="content"></div></section>
+      <section class="panel" id="install"><div class="section-head"><h2>Colibrì Local Installation</h2><span class="badge not-run">NOT RUN</span></div><div class="actions vertical"><button data-action="download" class="primary">Download &amp; Verify Official Windows Prebuilt</button><button data-action="extract">Extract Verified Runtime</button></div><div class="content"></div></section>
+      <section class="panel" id="smoke"><div class="section-head"><h2>Smoke Test</h2><span class="badge not-run">NOT RUN</span></div><p class="muted">Launch validation only. No model is loaded.</p><button data-action="smoke">Run Binary Smoke Test</button><div class="content"></div></section>
+      <section class="panel wide" id="gate"><div class="section-head"><h2>Phase 1 Gate</h2><span class="badge not-run">NOT RUN</span></div><button data-action="gate">Evaluate Gate</button><div class="content"></div></section>
+      <section class="panel wide" id="model-acquisition"><div class="section-head"><h2>Phase 2 — Qwen3.6 Acquisition</h2><span class="badge not-downloaded">NOT_DOWNLOADED</span></div><p><strong>Repository:</strong> Kreuzzelg/qwen36-35b-a3b-colibri-i4-gs64</p><p><strong>Variant:</strong> int4 / gs64</p><p><strong>Recommendation:</strong> Official Colibrì recommended Qwen3.6 container</p><p><strong>Destination:</strong> D:\TigerModels\Tiger-colibri-Qwen3.6-35B-A3B\downloads\qwen36-35b-a3b-colibri-i4-gs64</p><div class="actions"><button data-action="model-download" class="primary">Download Official Qwen3.6 Container</button><button data-action="model-verify">Verify Acquired Container</button></div><div class="content muted">Loading acquisition state…</div></section>
+      <section class="panel wide" id="manual"><div class="section-head"><h2>Runtime Guarantees</h2><span class="badge pass">PASS</span></div><label><input type="checkbox" checked disabled> Qwen3.6 runtime remains on C: NVMe</label><label><input type="checkbox" checked disabled> CPU-only: --gpu none, --cap 16, OMP_NUM_THREADS=4</label><label><input type="checkbox" checked disabled> Ollama remains unchanged</label><label><input type="checkbox" checked disabled> CUDA remains disabled</label></section>
+    </div>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', path='/js/app.js') }}"></script>
+</body>
+</html>
