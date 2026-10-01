@@ -1,11 +1,13 @@
-# 不用GPU，只要主記憶體夠大，就可以本地端，執行LLM
+# 不用GPU，只要主記憶體夠大，就可以本地端，執行LLM。
 
-Kimi K3 : 只需 RAM 128GB，接近專業工作站水準
+使用Colibrì，本地端部署 2.8兆參數的 Kimi K3 : 只需 RAM 128GB，就可接近專業工作站水準。
 
 Colibrì : https://github.com/JustVugg/colibri/blob/main/README.zh-TW.md?utm_source=chatgpt.com
 
 
 # Tiger-colibri-Qwen3.6-35B-A3B
+
+我的電腦主記憶體是16G，在此專案之前，使用lamma，最多可以使用model大小是9.6G的gemma4:e4b。此專案則可以使用21.5G的model Qwen3.6-35B-A3B。
 
 在 **Windows 11** 本機使用 **Colibrì** 執行 **Qwen3.6-35B-A3B**，並以 **FastAPI + Web UI + OpenAI-compatible API** 提供聊天、Web Search、Weather 資訊整合與工具呼叫的完整實作專案。
 
